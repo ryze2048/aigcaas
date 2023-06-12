@@ -2,7 +2,6 @@ package aigcaas
 
 import "fmt"
 
-// GetStableDiffusionUrl 基于模型 SD 1.5 请求的API地址
-func (c *Client) GetStableDiffusionUrl(applicationName, apiName string) string {
-	return fmt.Sprintf("%s/v2/application/%s/api/%s", URL, applicationName, apiName)
+func (c *Client) GetUrl(applicationName, apiName, version string) string {
+	return fmt.Sprintf("%s/%s/application/%s/api/%s", URL, version, applicationName, apiName)
 }
