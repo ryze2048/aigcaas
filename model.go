@@ -109,3 +109,103 @@ type CommonErrorResponse struct {
 	Message string `json:"message"`
 	Help    string `json:"help"`
 }
+
+// AsyncRequestIdErrorResponse 失败异步调用
+type AsyncRequestIdErrorResponse struct {
+	Error   string `json:"error"`
+	Message string `json:"message"`
+	Help    string `json:"help"`
+}
+
+// AsyncRequestIdSuccessResponse 成功异步调用
+type AsyncRequestIdSuccessResponse struct {
+	Images     []string `json:"images"`
+	Parameters struct {
+		EnableHr          bool        `json:"enable_hr"`
+		DenoisingStrength float64     `json:"denoising_strength"`
+		FirstphaseWidth   int         `json:"firstphase_width"`
+		FirstphaseHeight  int         `json:"firstphase_height"`
+		HrScale           float64     `json:"hr_scale"`
+		HrUpscaler        interface{} `json:"hr_upscaler"`
+		HrSecondPassSteps int         `json:"hr_second_pass_steps"`
+		HrResizeX         int         `json:"hr_resize_x"`
+		HrResizeY         int         `json:"hr_resize_y"`
+		HrSamplerName     interface{} `json:"hr_sampler_name"`
+		HrPrompt          string      `json:"hr_prompt"`
+		HrNegativePrompt  string      `json:"hr_negative_prompt"`
+		Prompt            string      `json:"prompt"`
+		Styles            interface{} `json:"styles"`
+		Seed              int         `json:"seed"`
+		Subseed           int         `json:"subseed"`
+		SubseedStrength   int         `json:"subseed_strength"`
+		SeedResizeFromH   int         `json:"seed_resize_from_h"`
+		SeedResizeFromW   int         `json:"seed_resize_from_w"`
+		SamplerName       interface{} `json:"sampler_name"`
+		BatchSize         int         `json:"batch_size"`
+		NIter             int         `json:"n_iter"`
+		Steps             int         `json:"steps"`
+		CfgScale          float64     `json:"cfg_scale"`
+		Width             int         `json:"width"`
+		Height            int         `json:"height"`
+		RestoreFaces      bool        `json:"restore_faces"`
+		Tiling            bool        `json:"tiling"`
+		DoNotSaveSamples  bool        `json:"do_not_save_samples"`
+		DoNotSaveGrid     bool        `json:"do_not_save_grid"`
+		NegativePrompt    interface{} `json:"negative_prompt"`
+		Eta               interface{} `json:"eta"`
+		SMinUncond        float64     `json:"s_min_uncond"`
+		SChurn            float64     `json:"s_churn"`
+		STmax             interface{} `json:"s_tmax"`
+		STmin             float64     `json:"s_tmin"`
+		SNoise            float64     `json:"s_noise"`
+		OverrideSettings  struct {
+		} `json:"override_settings"`
+		OverrideSettingsRestoreAfterwards bool          `json:"override_settings_restore_afterwards"`
+		ScriptArgs                        []interface{} `json:"script_args"`
+		SamplerIndex                      string        `json:"sampler_index"`
+		ScriptName                        interface{}   `json:"script_name"`
+		SendImages                        bool          `json:"send_images"`
+		SaveImages                        bool          `json:"save_images"`
+		AlwaysonScripts                   struct {
+		} `json:"alwayson_scripts"`
+	} `json:"parameters"`
+	Info string `json:"info"`
+}
+
+// AsyncRequestIdInfoSuccessResponse 成功异步调用中info响应参数
+type AsyncRequestIdInfoSuccessResponse struct {
+	Prompt                        string        `json:"prompt"`
+	AllPrompts                    []string      `json:"all_prompts"`
+	NegativePrompt                string        `json:"negative_prompt"`
+	AllNegativePrompts            []string      `json:"all_negative_prompts"`
+	Seed                          int           `json:"seed"`
+	AllSeeds                      []int         `json:"all_seeds"`
+	Subseed                       int           `json:"subseed"`
+	AllSubseeds                   []int         `json:"all_subseeds"`
+	SubseedStrength               int           `json:"subseed_strength"`
+	Width                         int           `json:"width"`
+	Height                        int           `json:"height"`
+	SamplerName                   string        `json:"sampler_name"`
+	CfgScale                      float64       `json:"cfg_scale"`
+	Steps                         int           `json:"steps"`
+	BatchSize                     int           `json:"batch_size"`
+	RestoreFaces                  bool          `json:"restore_faces"`
+	FaceRestorationModel          interface{}   `json:"face_restoration_model"`
+	SdModelHash                   string        `json:"sd_model_hash"`
+	SeedResizeFromW               int           `json:"seed_resize_from_w"`
+	SeedResizeFromH               int           `json:"seed_resize_from_h"`
+	DenoisingStrength             int           `json:"denoising_strength"`
+	ExtraGenerationParams         struct{}      `json:"extra_generation_params"`
+	IndexOfFirstImage             int           `json:"index_of_first_image"`
+	Infotexts                     []string      `json:"infotexts"`
+	Styles                        []interface{} `json:"styles"`
+	JobTimestamp                  string        `json:"job_timestamp"`
+	ClipSkip                      int           `json:"clip_skip"`
+	IsUsingInpaintingConditioning bool          `json:"is_using_inpainting_conditioning"`
+}
+
+// AsyncRequestIdWaitResponse 成功异步调用 等待结果
+type AsyncRequestIdWaitResponse struct {
+	Message string `json:"message"`
+	Help    string `json:"help"`
+}

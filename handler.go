@@ -41,7 +41,7 @@ func (c *Client) AsyncHandler(data *AsyncHandlerData) (requestId string, err err
 	if body, err = io.ReadAll(response.Body); err != nil {
 		return "", err
 	}
-	switch response.Header.Get(`Aigcaas-Status`) {
+	switch response.Header.Get(HeaderStatus) {
 	case SuccessStatus:
 		var commonSuccessResponse CommonSuccessResponse
 		if err = json.Unmarshal(body, &commonSuccessResponse); err != nil {

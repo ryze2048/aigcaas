@@ -3,6 +3,11 @@ package aigcaas
 // URL 请求地址
 const URL string = `https://api.aigcaas.cn`
 
+const AsyncRequestIdURL = `https://api.aigcaas.cn/v2/async`
+
+// HeaderStatus 响应头状态参数
+const HeaderStatus string = `Aigcaas-Status`
+
 // Version2 版本
 const (
 	Version2 = `v2`
@@ -25,4 +30,9 @@ const (
 const (
 	SuccessStatus string = `True`  // 成功
 	ErrorsStatus  string = `False` // 失败
+)
+
+const (
+	ResponseSuccessCode int = 200 // 成功
+	ResponseWaitCode        = 202 // 等待
 )

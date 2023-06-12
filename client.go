@@ -36,3 +36,17 @@ func (c *Client) Do(body interface{}, url string) (response *http.Response, err 
 	c.SetHeader(request)
 	return httpClient.Do(request)
 }
+
+// AsyncRequestId 异步请求结果
+func (c *Client) AsyncRequestId(requestId string) (response *http.Response, err error) {
+	var request *http.Request
+	if request, err = http.NewRequest("GET", AsyncRequestIdURL, nil); err != nil {
+		return nil, err
+	}
+	c.SetHeader(request)
+	request.Header.Add("RequestId", requestId)
+	if response, err = httpClient.Do(request); err != nil {
+		return nil, err
+	}
+	return
+}

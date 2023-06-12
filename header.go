@@ -10,8 +10,7 @@ import (
 )
 
 // SetHeader
-// 设置请求头
-// 签名计算
+// 设置请求头｜计算签名
 // 支持同步｜异步调用（支持轮询模式和通知模式）
 func (c *Client) SetHeader(request *http.Request) {
 	var timestamp = time.Now().Unix()
