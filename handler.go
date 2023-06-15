@@ -58,3 +58,36 @@ func (c *Client) AsyncHandler(data *AsyncHandlerData) (requestId string, err err
 		return "", errors.New(string(body))
 	}
 }
+
+type ComputerVisionHandlerData struct {
+	ApplicationName       string
+	ApiName               string
+	Version               string
+	ComputerVisionRequest *ComputerVisionRequest
+}
+
+// ComputerVision 适用于大部分计算机视觉分类的请求
+// 响应参数为字符串
+func (c *Client) ComputerVision(data *ComputerVisionHandlerData) (result string, err error) {
+	var response *http.Response
+	var requestUrl = c.GetUrl(data.ApplicationName, data.ApiName, data.Version)
+	if response, err = c.Do(data.ComputerVisionRequest, requestUrl); err != nil {
+		return "", err
+	}
+	defer func() {
+		_ = response.Body.Close()
+
+	}()
+	var bodyInfo = make([]byte, 0)
+	if bodyInfo, err = io.ReadAll(response.Body); err != nil {
+		return "", err
+	}
+	if response.Header.Get(HeaderStatus) == ErrorsStatus {
+		var computerVisionErrorResponse ComputerVisionErrorResponse
+		if err = json.Unmarshal(bodyInfo, &computerVisionErrorResponse); err != nil {
+			return "", err
+		}
+		return string(bodyInfo), errors.New(computerVisionErrorResponse.Error)
+	}
+	return string(bodyInfo), nil
+}

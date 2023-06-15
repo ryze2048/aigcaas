@@ -209,3 +209,34 @@ type AsyncRequestIdWaitResponse struct {
 	Message string `json:"message"`
 	Help    string `json:"help"`
 }
+
+// ComputerVisionRequest 计算机视觉分类模型请求参数
+type ComputerVisionRequest struct {
+	ImageUrl    string `json:"image_url,omitempty"`
+	ImageBase64 string `json:"image_base64,omitempty"`
+}
+
+// ComputerVisionSuccessResponse 关于计算机视觉分类成功的响应参数
+type ComputerVisionSuccessResponse struct {
+	Status string `json:"status"`
+	Data   string `json:"data"`
+}
+
+// ComputerVisionErrorResponse 关于计算机视觉分类失败的响应参数
+type ComputerVisionErrorResponse struct {
+	Error   string `json:"error"`
+	Message struct {
+		Error   string `json:"error"`
+		Message string `json:"message"`
+	} `json:"message"`
+	Help string `json:"help"`
+}
+
+// GeneralRecognitionSuccessResponse 万物识别成功的响应参数
+type GeneralRecognitionSuccessResponse struct {
+	Status string `json:"status"`
+	Data   struct {
+		Scores []float64 `json:"scores"`
+		Labels []string  `json:"labels"`
+	} `json:"data"`
+}

@@ -188,8 +188,15 @@ const (
 
 // 实时检测（Yolo） https://www.aigcaas.cn/product/detail/57.html
 const (
-	RealtimeDetection        string = `realtime_detection`
-	RealtimeDetectionApiName string = `traffic_sign`
+	RealtimeDetection            string = `realtime_detection`
+	RealtimeDetectionTrafficSign string = `traffic_sign` // 交通标识检测
+	RealtimeDetectionCigarette   string = `cigarette`    // 香烟检测
+	RealtimeDetectionSafetyHat   string = `safety_hat`   // 安全帽检测
+	RealtimeDetectionFacemask    string = `facemask`     // 口罩检测
+	RealtimeDetectionHand        string = `hand`         // 手部检测
+	RealtimeDetectionHead        string = `head`         // 人头检测
+	RealtimeDetectionHuman       string = `human`        // 人体检测
+	RealtimeDetectionPhone       string = `phone`        // 手机检测
 )
 
 // 二次元风格生成扩散模型（anything） https://www.aigcaas.cn/product/detail/56.html
@@ -257,6 +264,7 @@ const (
 
 // OCR 文字识别 https://www.aigcaas.cn/product/detail/29.html
 const (
-	Ocr        string = `ocr`
-	OcrApiName string = `source`
+	Ocr              string = `ocr`
+	OcrApiNameSource string = `source` // 原始模拟
+	OcrApiNameSimple string = `simple` // 简单模式
 )

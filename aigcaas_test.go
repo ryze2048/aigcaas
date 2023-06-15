@@ -86,3 +86,32 @@ func TestClient_AsyncRequestId(t *testing.T) {
 		fmt.Println(asyncRequestIdErrorResponse)
 	}
 }
+
+var client = NewClient(``, ``)
+
+func TestDec(t *testing.T) {
+	req := ComputerVisionHandlerData{
+		ApplicationName:       Dct,
+		ApiName:               DctMhfApiName,
+		Version:               Version2,
+		ComputerVisionRequest: nil,
+	}
+	data := &ComputerVisionRequest{
+		ImageUrl:    "",
+		ImageBase64: "",
+	}
+	req.ComputerVisionRequest = data
+
+	var err error
+	var result string
+	if result, err = client.ComputerVision(&req); err != nil {
+		t.Error("req err --> ", err)
+	}
+
+	var success ComputerVisionSuccessResponse
+	if err = json.Unmarshal([]byte(result), &success); err != nil {
+		t.Error("unmarshal err --> ", err)
+	}
+	fmt.Println(success)
+	fmt.Println(result)
+}
